@@ -1,6 +1,6 @@
 <?php
 require_once("./Database.php");
-class Users extends DataBase
+class UsersModel extends DataBase
 {
      public function addUsers($data)
      {
@@ -8,16 +8,17 @@ class Users extends DataBase
           $user = $this->insertDb($data, $sql);
           print_r($user);
      }
-     public function getAllusers()
+     public function getOneUsers($username)
+     {
+          $sql = "SELECT * FROM users WHERE username=?";
+          $data = array($username);
+          $user = $this->getOneData($sql, $data);
+          print_r($user);
+     }
+     public function getAllUsers()
      {
           $sql = "SELECT * FROM users";
           $user = $this->getManyData($sql);
-          print_r($user);
-     }
-     public function getOneUsers($data)
-     {
-          $sql = "SELECT * FROM users WHERE username=?";
-          $user = $this->getOneData($sql, $data);
           print_r($user);
      }
 
@@ -34,9 +35,9 @@ class Users extends DataBase
           print_r($reponse);
      }
 }
-$instanciation = new Users();
+$instanciation = new UsersModel();
 // $instanciation->getAllusers();
 $instanciation->addUsers(['Aaron', '123456']);
-// $instanciation->getUsers();
+// $instanciation->getOneUsers();
 // $instanciation->deleteUsers([2]);
 // $instanciation->updateUsers(['gbossa','142542','3']);
