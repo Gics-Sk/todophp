@@ -23,7 +23,7 @@ protected function insertDb($data, $sql)
 {
      try {
           $objBdd = $this->connectDb();
-          $sql = "INSERT INTO  users (username,password) VALUE (?,?)";
+          $sql = "INSERT INTO  users (username,password) VALUES (?,?)";
           $req = $objBdd->prepare($sql);
           $req->execute($data);
           echo "Utilisateur ajouter avec succès...";
@@ -65,9 +65,34 @@ protected function getManyData($sql, $data=null)
           $req->execute($data);
           $reponse = $req->fetchAll(PDO::FETCH_ASSOC);
           return $reponse;
-          echo "Requete reussie";
+          echo "Requête réussie";
      } catch (PDOException $ta) {
           echo $ta->getMessage();
+     }
+}
+
+protected function deleteData($sql, $data){
+     try {
+          $objBdd = $this->connectDb();
+          $req = $objBdd->prepare($sql);
+          $req->execute($data);
+          $reponse = $req->fetch(PDO::FETCH_ASSOC);
+          return $reponse;
+          echo "suppression réussie";
+     } catch (PDOException  $th) {
+          echo $th ->getMessage();
+     }
+}
+protected function updateData($sql,$data){
+     try {
+          $objBdd = $this->connectDb();
+          $req = $objBdd->prepare($sql);
+          $req->execute($data);
+          $reponse = $req->fetch(PDO::FETCH_ASSOC);
+          return $reponse;
+          echo "Mise à jour effectuer";
+     } catch (PDOException $th) {
+          echo $th->getMessage();
      }
 }
 
