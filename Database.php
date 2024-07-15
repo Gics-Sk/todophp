@@ -4,25 +4,24 @@
 require_once("./config/env.php");
 
 abstract class DataBase {
-     
-//CONNECTION A LA BASE DE DONNEE.
-protected function connectDb()
-{
-
+     protected $db;
+     public function __construct() {
+          
      try {
-          $bdd = new PDO("mysql:host=" . $_ENV['host'] . ";dbname=" . $_ENV['dbname'], $_ENV['username'], $_ENV['password']);
-          $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          $this->db = new PDO("mysql:host=" . $_ENV['host'] . ";dbname=" . $_ENV['dbname'], $_ENV['username'], $_ENV['password']);
+          $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           echo "connexion ok";
-          return $bdd;
+          return $this->db ;
      } catch (PDOException $e) {
           echo $e->getMessage();
      }
-}
+     }
+
 //INSERTION DANS LA BASE DE DONNEE
 protected function insertDb($data, $sql)
 {
      try {
-          $objBdd = $this->connectDb();
+          $objBdd = $this->db;
           $sql = "INSERT INTO  users (username,password) VALUES (?,?)";
           $req = $objBdd->prepare($sql);
           $req->execute($data);
@@ -32,17 +31,11 @@ protected function insertDb($data, $sql)
      }
 }
 
-// $sql = "INSERT INTO users (username ,password) VALUE (?,?)";
-// $username ="Jaures";
-// $password ="Azerty";
-// $data = [$username,$password];
-// insertDb($data,$sql);
-
 // FONCTION POUR RECUPERER UN USER
 protected function getOneData($sql, $data)
 {
      try {
-          $objBdd = $this->connectDb();
+          $objBdd = $this->db;
           $req = $objBdd->prepare($sql);
           $req->execute($data);
           $reponse = $req->fetch(PDO::FETCH_ASSOC);
@@ -60,7 +53,7 @@ protected function getOneData($sql, $data)
 protected function getManyData($sql, $data=null)
 {
      try {
-          $objBdd = $this->connectDb();
+          $objBdd = $this->db;
           $req = $objBdd->prepare($sql);
           $req->execute($data);
           $reponse = $req->fetchAll(PDO::FETCH_ASSOC);
@@ -73,7 +66,7 @@ protected function getManyData($sql, $data=null)
 
 protected function deleteData($sql, $data){
      try {
-          $objBdd = $this->connectDb();
+          $objBdd = $this->db;
           $req = $objBdd->prepare($sql);
           $req->execute($data);
           $reponse = $req->fetch(PDO::FETCH_ASSOC);
@@ -85,7 +78,7 @@ protected function deleteData($sql, $data){
 }
 protected function updateData($sql,$data){
      try {
-          $objBdd = $this->connectDb();
+          $objBdd = $this->db;
           $req = $objBdd->prepare($sql);
           $req->execute($data);
           $reponse = $req->fetch(PDO::FETCH_ASSOC);

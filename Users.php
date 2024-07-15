@@ -14,7 +14,7 @@ class Users extends DataBase
           $user = $this->getManyData($sql);
           print_r($user);
      }
-     public function getUsers($data)
+     public function getOneUsers($data)
      {
           $sql = "SELECT * FROM users WHERE username=?";
           $user = $this->getOneData($sql, $data);
