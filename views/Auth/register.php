@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && $_POST["subscribe"]== "S'inscrire") {
 
      // Insertion d'un utilisateur 
      $instanciation = new UsersModel();
-     $instanciation->addUsers([$user_username,  password_hash($user_password, PASSWORD_DEFAULT)]);
+     $instanciation->addUsers([$user_username, $user_email,  password_hash($user_password, PASSWORD_DEFAULT)]);
 }
 ?>
 <!DOCTYPE html>

@@ -17,12 +17,12 @@
                     <h2>AUTHENTIFICATION</h2>
                     <input type="text" placeholder="Username">
                     <input type="password" placeholder="Password">
-                    <p class="forget">Mot de passe oublié ? <a href="#">Cliquez ici</a></p>
+                    <p class="forget">Mot de passe oublié ? <a href="#" id="forget">Cliquez ici</a></p>
                     <button class="btn">Connexion</button>
                </form>
-             
+               <span class="compte">Vous n'avez pas un compte ?<a href="/register" id="compte"> Créer un compte</a></span>
           </div>
-          <!-- <span>Cliquez ici si pour créer un compte<a href="inscription.php"> Inscription </a></span> -->
+        
      </main>
      <?php include '../views/partials/footer.php' ?>
 </body>

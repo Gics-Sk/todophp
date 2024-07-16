@@ -5,7 +5,7 @@ if(isset($route)){
           case '/':
                require_once '../views/index.php';
                break;
-          case '/todo-list':
+          case '/todolist':
                require_once '../views/todolist.php';
                break;
           case '/login':

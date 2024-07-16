@@ -59,6 +59,31 @@ protected function getManyData($sql, $data=null)
           echo $ta->getMessage();
      }
 }
+protected function getAllTask($sql, $data=null){
+     try {
+          $objBdd = $this->db;
+          $req = $objBdd->prepare($sql);
+          $req->execute($data);
+          $reponse = $req->fetchAll(PDO::FETCH_ASSOC);
+          return $reponse;
+          echo "Requête réussie";
+     } catch (PDOException $ta) {
+          echo $ta->getMessage();
+     }
+}
 
+protected function getOneTask($sql, $data=null){
+
+}
+ protected function setTask($data,$sql){
+     
+     try {
+          $objBdd = $this->db;
+          $req = $objBdd->prepare($sql);
+          $req->execute($data);
+     } catch (PDOException $th) {
+          echo $th->getMessage();
+     }
+ }
 
 }

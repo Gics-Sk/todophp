@@ -4,7 +4,7 @@ class UsersModel extends DataBase
 {
      public function addUsers($data)
      {
-          $sql = "INSERT INTO users (username ,password) VALUES (?,?)";
+          $sql = "INSERT INTO users (username ,email,password) VALUES (?,?,?)";
           $user = $this->setData($data, $sql);
           print_r($user);
           ?>
