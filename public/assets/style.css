@@ -89,14 +89,9 @@ footer {
      width: 100%;
 }
 .navbar ul li.active {
-  background-color: #C85D1B;
-  color: #fff; 
-  padding: 0.5rem;
-  border-radius: 0.6rem;
+  border-bottom: 2px solid #C85D1B;
 }
-.navbar ul li.active a {
-  color: #fff;
-}
+
 .compte {
   font-size: 1rem;
 }
@@ -140,4 +135,5 @@ input[type="checkbox"]{
   .statut {
     background-color:#ec9e37be;
     padding: 0.5rem;
+    text-align: justify;
   }

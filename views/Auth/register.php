@@ -26,13 +26,13 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && $_POST["subscribe"]== "S'inscrire") {
 <?php include '../views/partials/navbar.php' ; ?>
 <main> 
          <div class="card">
-         <form action="/register" method="post">
+         <form action="/register" method="POST">
                     <h2>INSCRIPTION</h2>
-                    <input type="text" placeholder="Username" name="username">
-                    <input type="mail" placeholder="E-mail" name="email">
-                    <input type="password" placeholder="Password" name="password">
+                    <input type="text" placeholder="Username" name="username" required>
+                    <input type="mail" placeholder="E-mail" name="email" required>
+                    <input type="password" placeholder="Password" name="password" required>
                     <!-- <input type="password" placeholder="Confirm Password" name="password"> -->
-                    <input type="submit" value="S'inscrire" class="btn" name="subscribe"> 
+                    <input type="submit" value="S'inscrire" class="btn" name="subscribe" required> 
                     <input type="reset" value="Annuler" class="btn">
           </form>
          </div>
